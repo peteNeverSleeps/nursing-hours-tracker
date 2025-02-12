@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "nursing_tracker_user",
+    "password": "eppslex82",
+    "database": "nursing_hours_db",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "nursing_tracker_user",
+    "password": "eppslex82",
+    "database": "nursing_hours_db_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "nursing_tracker_user",
+    "password": "eppslex82",
+    "database": "nursing_hours_db",
+    "host": "YOUR_PRODUCTION_HOST",
+    "dialect": "postgres"
+  }
+}
