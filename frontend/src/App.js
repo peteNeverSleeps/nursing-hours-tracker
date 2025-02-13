@@ -6,7 +6,6 @@ import Tracker from './components/Tracker';
 import Dashboard from './components/Dashboard';
 
 function App() {
-  // Simple auth state stored in memory; in production, consider using Context or Redux.
   const [token, setToken] = useState(localStorage.getItem('token') || null);
 
   const handleLogin = (newToken) => {
@@ -19,10 +18,10 @@ function App() {
     setToken(null);
   };
 
-  // Define a style object that applies the background image.
-  // Replace the URL below with your desired background image.
+  // Update the background image URL to point to your background1 image.
+  // Since background1.jpg is placed in the public folder, reference it as '/background1.jpg'.
   const appStyle = {
-    backgroundImage: "url('https://via.placeholder.com/1500')",
+    backgroundImage: "url('/background1.jpg')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     minHeight: '100vh',
@@ -31,7 +30,7 @@ function App() {
   return (
     <Router>
       <div style={appStyle}>
-      {token && <button className="logout-button" onClick={handleLogout}>Logout</button>}
+        {token && <button className="logout-button" onClick={handleLogout}>Logout</button>}
         <Routes>
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/tracker" element={token ? <Tracker token={token} /> : <Navigate to="/login" />} />

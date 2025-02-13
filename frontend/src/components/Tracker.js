@@ -5,14 +5,12 @@ import '../styles.css';
 function Tracker({ token }) {
   // This function recalculates the totals in the "Total Hours" row.
   function updateTotals() {
-    // Find the row where the first header cell is "Total Hours"
     const totalHoursRow = Array.from(document.querySelectorAll('tbody tr'))
       .find(r => r.firstElementChild && r.firstElementChild.innerText.trim() === 'Total Hours');
     if (!totalHoursRow) return;
     
     const cells = totalHoursRow.children;
     let finalTotalIndex = -1;
-    // Locate the cell with id="finalTotal" (this marks the end of the first group)
     for (let i = 0; i < cells.length; i++) {
       if (cells[i].id === 'finalTotal') {
         finalTotalIndex = i;
@@ -21,9 +19,7 @@ function Tracker({ token }) {
     }
     if (finalTotalIndex === -1) return;
 
-    // --- Compute first-group total ---
-    // Sum cells starting at index 1 (skip the "Total Hours" header)
-    // up to (but not including) the finalTotal cell.
+    // Compute first-group total.
     let groupTotal = 0;
     for (let i = 1; i < finalTotalIndex; i++) {
       const val = parseFloat(cells[i].innerText.replace(/[^0-9.]/g, '')) || 0;
@@ -31,9 +27,7 @@ function Tracker({ token }) {
     }
     cells[finalTotalIndex].innerText = groupTotal.toFixed(2);
 
-    // --- Compute cumulative totals ---
-    // We assume the next cell (index = finalTotalIndex+1) is the header cell "Cumulative Total Hours".
-    // The cumulative total cells then begin at index finalTotalIndex+2.
+    // Compute cumulative totals.
     const cumulativeHeaderIndex = finalTotalIndex + 1;
     let runningTotal = groupTotal;
     for (let i = cumulativeHeaderIndex + 1; i < cells.length; i++) {
@@ -43,7 +37,7 @@ function Tracker({ token }) {
     }
   }
 
-  // This function sends the updated row data to your backend.
+  // Sends the updated row data to your backend.
   function sendUpdate(row) {
     const cells = row.querySelectorAll('td, th');
     if (!cells.length) return;
@@ -64,17 +58,14 @@ function Tracker({ token }) {
   // Set up event listeners on all editable cells.
   useEffect(() => {
     updateTotals();
-    // Select all editable <td> elements (or <th> if needed)
     const editableCells = document.querySelectorAll('tbody td[contentEditable="true"], tbody th[contentEditable="true"]');
     const handleInput = (event) => {
       updateTotals();
-      // Send update for the row that changed.
       sendUpdate(event.target.parentElement);
     };
     editableCells.forEach(cell => {
       cell.addEventListener('input', handleInput);
     });
-    // Clean up listeners on unmount.
     return () => {
       editableCells.forEach(cell => {
         cell.removeEventListener('input', handleInput);

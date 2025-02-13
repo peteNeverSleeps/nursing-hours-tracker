@@ -1,3 +1,5 @@
+/* styles.css */
+
 .heading-title {
   color: white;
 }
@@ -17,13 +19,12 @@
 /* Navbar */
 .navbar {
   width: 100%;
-  background-color: #800080; /* Same as login button */
+  background-color: #800080;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* Reduce horizontal padding so Logout isn't too far right */
-  padding: 15px 10px; 
+  padding: 15px 10px;
   position: fixed;
   top: 0;
   left: 0;
@@ -31,7 +32,7 @@
 }
 
 .heading-title {
-  margin-left: 20px; /* moves the title slightly from the extreme left */
+  margin-left: 20px;
 }
 
 .logout-button {
@@ -42,7 +43,7 @@
   cursor: pointer;
   font-size: 16px;
   border-radius: 5px;
-  margin-right: 20px; /* Moves Logout button leftward from the edge */
+  margin-right: 20px;
 }
 
 .logout-button:hover {
@@ -51,13 +52,12 @@
 
 /* Table Container */
 .table-container {
-  width: 80%; 
-  max-width: 1100px; /* So it doesn’t fill very large monitors edge-to-edge */
-  margin: 80px auto; /* Center the container, plus top spacing for navbar */
+  width: 80%;
+  max-width: 1100px;
+  margin: 80px auto;
   background: rgba(255, 255, 255, 0.9);
   padding: 20px;
   border-radius: 10px;
-  /* Remove horizontal scroll so the table is always in view */
 }
 
 table {
@@ -90,47 +90,55 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* Additional color/formatting from your original snippet */
 thead th {
-  background-color: #f2f2f2; 
+  background-color: #f2f2f2;
   font-weight: bold;
 }
 
 tbody th {
-  background-color: #e3e3e3; 
+  background-color: #e3e3e3;
   font-weight: bold;
   text-align: left;
   vertical-align: middle;
 }
 
 .year1-header {
-  background-color: #87AADC;  /* light blue */
-  color: #000000; 
-  font-weight: bold;
-}
-.year2-header {
-  background-color: #FFC7CB; /* light pink/flesh */
-  color: #000000; 
-  font-weight: bold;
-}
-.year3-header {
-  background-color: #9A9FFF; /* light purple */
+  background-color: #87AADC;
   color: #000000;
   font-weight: bold;
 }
+
+.year2-header {
+  background-color: #FFC7CB;
+  color: #000000;
+  font-weight: bold;
+}
+
+.year3-header {
+  background-color: #9A9FFF;
+  color: #000000;
+  font-weight: bold;
+}
+
 .category-header {
   background-color: #BEAE80;
   color: #000000;
   font-weight: bold;
 }
 
-/* Tweak your h2 styling so it looks balanced with the narrower table */
+/* Header styling */
 h2 {
   text-align: center;
   font-size: 50px;
   color: #7600bc;
-  margin: 0; /* We let .heading-title control left margin above */
+  margin: 0;
   padding-left: 15px;
 }
 
-/* Remainder of your styles remain unchanged as needed... */
+/* You can also set a background image for the body via CSS if desired:
+body {
+  background-image: url('/background1.jpg');
+  background-size: cover;
+  background-position: center;
+}
+*/
