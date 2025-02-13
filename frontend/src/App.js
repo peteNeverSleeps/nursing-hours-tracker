@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Login from './components/Login';
 import Tracker from './components/Tracker';
 import Dashboard from './components/Dashboard';
+import background from './assets/background.jpg';
+
 
 function App() {
   // Simple auth state stored in memory; in production, consider using Context or Redux.
