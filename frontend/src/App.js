@@ -5,7 +5,6 @@ import Login from './components/Login';
 import Tracker from './components/Tracker';
 import Dashboard from './components/Dashboard';
 
-
 function App() {
   // Simple auth state stored in memory; in production, consider using Context or Redux.
   const [token, setToken] = useState(localStorage.getItem('token') || null);
@@ -20,8 +19,14 @@ function App() {
     setToken(null);
   };
 
-  // Define a style object that applies the background image
-
+  // Define a style object that applies the background image.
+  // Replace the URL below with your desired background image.
+  const appStyle = {
+    backgroundImage: "url('https://via.placeholder.com/1500')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    minHeight: '100vh',
+  };
 
   return (
     <Router>
