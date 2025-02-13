@@ -12,28 +12,31 @@
 }
 
 /* Navbar */
+/* Navigation container */
 .navbar {
-  width: 100%;
-  background-color: #800080; /* Same as login button */
-  color: white;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
+  justify-content: space-between; /* Distributes items to edges */
+  align-items: center; /* Vertically centers the items */
+  background-color: #4E1681; /* Matches the header color */
+  padding: 10px 20px; /* Adjusts padding */
 }
 
+/* Styling for the title */
+.navbar-title {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Logout button styling */
 .logout-button {
   background-color: white;
-  color: #800080;
-  padding: 10px 20px;
+  color: #4E1681;
   border: none;
-  cursor: pointer;
-  font-size: 16px;
+  padding: 10px 15px;
   border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .logout-button:hover {

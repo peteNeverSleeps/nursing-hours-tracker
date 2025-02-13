@@ -31,7 +31,7 @@ function App() {
   return (
     <Router>
       <div style={appStyle}>
-        {token && <button onClick={handleLogout}>Logout</button>}
+      {token && <button className="logout-button" onClick={handleLogout}>Logout</button>}
         <Routes>
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/tracker" element={token ? <Tracker token={token} /> : <Navigate to="/login" />} />
