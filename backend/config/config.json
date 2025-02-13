@@ -1,22 +1,22 @@
 {
   "development": {
-    "username": "nursing_tracker_user",
-    "password": "eppslex82",
-    "database": "nursing_hours_db",
+    "username": "postgres",
+    "password": "VBRpzIWyJhKbmKneqDYnLPAdfkKoxnkG",
+    "database": "railway",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "username": "nursing_tracker_user",
-    "password": "eppslex82",
-    "database": "nursing_hours_db_test",
+    "username": "postgres",
+    "password": "VBRpzIWyJhKbmKneqDYnLPAdfkKoxnkG",
+    "database": "railway",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "username": "nursing_tracker_user",
-    "password": "eppslex82",
-    "database": "nursing_hours_db",
+    "username": "postgres",
+    "password": "VBRpzIWyJhKbmKneqDYnLPAdfkKoxnkG",
+    "database": "railway",
     "host": "postgres.railway.internal",
     "dialect": "postgres"
   }
