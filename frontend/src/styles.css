@@ -1,6 +1,6 @@
 /* === Nursing Hours Tracker Styling === */
 .tracker-container {
-  background-image: url('../assets/background.jpg'); /* Update path if needed */
+ 
   background-size: cover;
   background-position: center;
   min-height: 100vh;
