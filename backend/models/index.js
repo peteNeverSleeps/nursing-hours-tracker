@@ -1,11 +1,20 @@
 const { Sequelize } = require("sequelize");
+require("dotenv").config(); // Load environment variables
 
-// Use DATABASE_URL for Railway, fallback to local database
-const sequelize = new Sequelize(process.env.DATABASE_URL || "postgres://nursing_tracker_user:eppslex82@localhost:5432/nursing_hours_db", {
+// Ensure DATABASE_URL exists
+if (!process.env.DATABASE_URL) {
+  throw new Error("Missing DATABASE_URL environment variable");
+}
+
+// Initialize Sequelize
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: "postgres",
   logging: false, // Disable logging to keep logs clean
   dialectOptions: {
-    ssl: process.env.DATABASE_URL ? { require: true, rejectUnauthorized: false } : false, // Use SSL for Railway
+    ssl: {
+      require: true,
+      rejectUnauthorized: false, // Required for Railway
+    },
   },
 });
 

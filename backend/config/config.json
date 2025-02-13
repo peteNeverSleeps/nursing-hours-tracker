@@ -17,7 +17,7 @@
     "username": "nursing_tracker_user",
     "password": "eppslex82",
     "database": "nursing_hours_db",
-    "host": "YOUR_PRODUCTION_HOST",
+    "host": "postgres.railway.internal",
     "dialect": "postgres"
   }
 }
