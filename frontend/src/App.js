@@ -4,8 +4,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Login from './components/Login';
 import Tracker from './components/Tracker';
 import Dashboard from './components/Dashboard';
-import background from './assets/background.webp';
-
+import background from './assets/background.webp'; // Import the background image
 
 function App() {
   // Simple auth state stored in memory; in production, consider using Context or Redux.
@@ -21,9 +20,17 @@ function App() {
     setToken(null);
   };
 
+  // Define a style object that applies the background image
+  const appStyle = {
+    backgroundImage: `url(${background})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    minHeight: '100vh',
+  };
+
   return (
     <Router>
-      <div>
+      <div style={appStyle}>
         {token && <button onClick={handleLogout}>Logout</button>}
         <Routes>
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
