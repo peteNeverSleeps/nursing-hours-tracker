@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Login from './components/Login';
 import Tracker from './components/Tracker';
 import Dashboard from './components/Dashboard';
-import background from './assets/background.jpg';
+import background from './assets/background.webp';
 
 
 function App() {
