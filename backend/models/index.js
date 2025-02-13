@@ -1,21 +1,9 @@
 const { Sequelize } = require("sequelize");
-require("dotenv").config(); // Load environment variables
 
-// Ensure DATABASE_URL exists
-if (!process.env.DATABASE_URL) {
-  throw new Error("Missing DATABASE_URL environment variable");
-}
-
-// Initialize Sequelize
+// Use environment variables for database connection
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: "postgres",
-  logging: false, // Disable logging to keep logs clean
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false, // Required for Railway
-    },
-  },
+  logging: false, // Disable logging for cleaner output
 });
 
 const db = {};
