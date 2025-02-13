@@ -1,21 +1,21 @@
 {
   "development": {
     "username": "postgres",
-    "password": "VBRpzIWyJhKbmKneqDYnLPAdfkKoxnkG",
+    "password": "eppslex82",
     "database": "railway",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
-    "password": "VBRpzIWyJhKbmKneqDYnLPAdfkKoxnkG",
+    "password": "eppslex82",
     "database": "railway",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
-    "password": "VBRpzIWyJhKbmKneqDYnLPAdfkKoxnkG",
+    "password": "eppslex82",
     "database": "railway",
     "host": "postgres.railway.internal",
     "dialect": "postgres"
