@@ -92,7 +92,7 @@ function Tracker({ token }) {
     <div className="tracker-container">
       {/* Navbar */}
       <nav className="navbar">
-        <h2>Nursing Hours Tracker</h2>
+        <h2 className="heading-title">Nursing Hours Tracker</h2>
         <button className="logout-button" onClick={() => window.location.href = '/login'}>Logout</button>
       </nav>
 
