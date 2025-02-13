@@ -22,11 +22,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
+  /* Reduce horizontal padding so Logout isn't too far right */
+  padding: 15px 10px; 
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
+}
+
+.heading-title {
+  margin-left: 20px; /* moves the title slightly from the extreme left */
 }
 
 .logout-button {
@@ -37,21 +42,22 @@
   cursor: pointer;
   font-size: 16px;
   border-radius: 5px;
+  margin-right: 20px; /* Moves Logout button leftward from the edge */
 }
 
 .logout-button:hover {
   background-color: #d8b6d8;
 }
 
-/* Centered Table Container */
+/* Table Container */
 .table-container {
-  /* Let the container grow so the entire table is visible without horizontal scrolling */
-  width: 100%;
-  margin-top: 80px; /* Adjusted for navbar */
+  width: 80%; 
+  max-width: 1100px; /* So it doesn’t fill very large monitors edge-to-edge */
+  margin: 80px auto; /* Center the container, plus top spacing for navbar */
   background: rgba(255, 255, 255, 0.9);
   padding: 20px;
   border-radius: 10px;
-  /* Removed overflow-x: auto and max-width so the table can display fully */
+  /* Remove horizontal scroll so the table is always in view */
 }
 
 table {
@@ -83,53 +89,15 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
-nav {
-  background-color: #f8f8f8;
-  padding: 10px;
-}
-.topmenu {
-  margin-right: 15px;
-  text-decoration: none;
-  color: #333;
-}
-.container {
-  display: flex;
-  margin: 20px;
-}
-.profile_image {
-  max-width: 300px;
-  border-radius: 10px;
-  margin-right: 20px;
-}
-.skill img, .project-card img {
-  max-width: 100px;
-}
-.greeting {
-  color: #4E1681;
-}
-/* Additional table styling from snippet #1 */
-table {
-  border-collapse: collapse;
-  width: 100%;
-  font-family: Arial, sans-serif;
-  margin-top: 40px; /* some space above the table */
-}
 
-th, td {
-  border: 1px solid #000;
-  text-align: center;
-  padding: 6px 8px;
-}
-
-/* Top header cells */
+/* Additional color/formatting from your original snippet */
 thead th {
-  background-color: #f2f2f2; /* change if you want */
+  background-color: #f2f2f2; 
   font-weight: bold;
 }
 
-/* Left side row headers in the table body */
 tbody th {
-  background-color: #e3e3e3; /* change if you want */
+  background-color: #e3e3e3; 
   font-weight: bold;
   text-align: left;
   vertical-align: middle;
@@ -137,7 +105,7 @@ tbody th {
 
 .year1-header {
   background-color: #87AADC;  /* light blue */
-  color: #000000;   /* black */
+  color: #000000; 
   font-weight: bold;
 }
 .year2-header {
@@ -156,32 +124,13 @@ tbody th {
   font-weight: bold;
 }
 
-body {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-/* Titles */
+/* Tweak your h2 styling so it looks balanced with the narrower table */
 h2 {
   text-align: center;
   font-size: 50px;
-  float: left;
   color: #7600bc;
-  margin: 30px;
-  margin-left: 60px;
-  margin-top: 40px;
-  margin-bottom: 0px;
+  margin: 0; /* We let .heading-title control left margin above */
+  padding-left: 15px;
 }
 
-.introduction {
-  text-align: center;
-  font-size: 30px;
-  float: left;
-  margin-top: 30px;
-  margin-bottom: 20px;
-  animation-duration: 5s;
-  position: relative;
-}
-
-/* Etc... Keep the rest of your styles as is. */
-
-/* Make sure not to re-apply overflow-x or a max-width that forces scrolling. */
+/* Remainder of your styles remain unchanged as needed... */

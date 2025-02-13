@@ -1,6 +1,5 @@
 // src/components/Tracker.js
 import React, { useEffect } from 'react';
-import { createHoursEntry } from '../api';
 import '../styles.css';
 
 function Tracker({ token }) {
@@ -27,11 +26,9 @@ function Tracker({ token }) {
     // up to (but not including) the finalTotal cell.
     let groupTotal = 0;
     for (let i = 1; i < finalTotalIndex; i++) {
-      // Remove any non-numeric characters (like parentheses or <br/> artifacts)
       const val = parseFloat(cells[i].innerText.replace(/[^0-9.]/g, '')) || 0;
       groupTotal += val;
     }
-    // Update the finalTotal cell with the computed total.
     cells[finalTotalIndex].innerText = groupTotal.toFixed(2);
 
     // --- Compute cumulative totals ---
@@ -90,7 +87,9 @@ function Tracker({ token }) {
       {/* Navbar */}
       <nav className="navbar">
         <h2 className="heading-title">Nursing Hours Tracker</h2>
-        <button className="logout-button" onClick={() => window.location.href = '/login'}>Logout</button>
+        <button className="logout-button" onClick={() => window.location.href = '/login'}>
+          Logout
+        </button>
       </nav>
 
       {/* Table Container */}
