@@ -86,15 +86,11 @@ function Tracker({ token }) {
     // your existing useEffect
   }, [token]);
 
+
   return (
     <div className="tracker-container">
       {/* Navbar */}
-      <nav className="navbar">
-        <h2 className="heading-title">Nursing Hours Tracker</h2>
-        <button className="logout-button" onClick={() => window.location.href = '/login'}>
-          Logout
-        </button>
-      </nav>
+      
 
       {/* Table Container */}
       <div className="table-container">

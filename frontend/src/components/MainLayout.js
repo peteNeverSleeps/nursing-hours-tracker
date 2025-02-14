@@ -1,25 +1,46 @@
-import React from "react";
-import { Outlet, Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Tracker from "./Tracker";
+import HourCalculator from "./HourCalculator";
 import "../styles.css";
 
+/**
+ * MainLayout shows:
+ *  - Top Navbar (purple bar)
+ *  - Left "tiles" (sidebar)
+ *  - Right "panels" that expand/collapse
+ */
 function MainLayout({ handleLogout }) {
   const navigate = useNavigate();
 
+  // We keep track of which "panel" is currently open:
+  // 'tracker', 'calculator', or null if none are open.
+  const [openPanel, setOpenPanel] = useState(null);
+
   const onLogoutClick = () => {
-    if (handleLogout) {
-      handleLogout();
-    }
-    navigate("/login"); // After logout, go to /login
+    if (handleLogout) handleLogout();
+    navigate("/login");
+  };
+
+  // If user clicks "Tracker," we toggle that panel open or closed
+  const handleTrackerClick = () => {
+    setOpenPanel((prev) => (prev === "tracker" ? null : "tracker"));
+  };
+
+  // If user clicks "Calculator," we toggle that panel open or closed
+  const handleCalcClick = () => {
+    setOpenPanel((prev) => (prev === "calculator" ? null : "calculator"));
   };
 
   return (
     <div className="layout-container">
-      {/* Top Navbar */}
+      {/* === TOP NAVBAR === */}
       <nav className="top-nav">
         <div className="nav-left">
           <h2 className="app-title">Nursing Hours Tracker</h2>
         </div>
         <div className="nav-right">
+          {/* Example profile icon */}
           <img
             src="https://via.placeholder.com/40"
             alt="Profile"
@@ -31,22 +52,48 @@ function MainLayout({ handleLogout }) {
         </div>
       </nav>
 
-      {/* Main body => Sidebar + Main Content */}
+      {/* === BODY (sidebar + right panels) === */}
       <div className="body-container">
-        {/* Left Sidebar: "tiles" to navigate to different pages */}
+        {/* LEFT SIDEBAR with "tiles" */}
         <aside className="sidebar">
-          <Link to="/main/tracker" className="sidebar-tile">
+          <div
+            className={`sidebar-tile ${
+              openPanel === "tracker" ? "selected" : ""
+            }`}
+            onClick={handleTrackerClick}
+          >
             Tracker
-          </Link>
-          <Link to="/main/hour-calculator" className="sidebar-tile">
+          </div>
+          <div
+            className={`sidebar-tile ${
+              openPanel === "calculator" ? "selected" : ""
+            }`}
+            onClick={handleCalcClick}
+          >
             Hours Calculator
-          </Link>
+          </div>
         </aside>
 
-        {/* Right side: whichever route is selected (Tracker or HourCalculator) */}
-        <main className="main-content">
-          <Outlet />
-        </main>
+        {/* RIGHT "PANELS" - we have 2 potential panels: Tracker + Calculator */}
+        <div className="right-panels">
+          {/* Tracker panel */}
+          <div
+            className={`panel-wrapper ${
+              openPanel === "tracker" ? "panel-open" : "panel-closed"
+            }`}
+          >
+            <Tracker />
+          </div>
+
+          {/* Hours Calculator panel */}
+          <div
+            className={`panel-wrapper ${
+              openPanel === "calculator" ? "panel-open" : "panel-closed"
+            }`}
+          >
+            <HourCalculator />
+          </div>
+        </div>
       </div>
     </div>
   );
