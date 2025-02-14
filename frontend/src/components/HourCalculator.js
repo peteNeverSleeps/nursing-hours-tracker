@@ -1,18 +1,19 @@
+// src/components/HourCalculator.js
 import React, { useState } from "react";
 import "../styles.css";
 
 function HourCalculator() {
-  const [items, setItems] = useState([
-    { rotation: "Clinical A", hours: 10 },
-    { rotation: "Clinical B", hours: 8 },
+  const [data, setData] = useState([
+    { rotation: "Clinical A", hours: 5 },
+    { rotation: "Clinical B", hours: 7 }
   ]);
 
-  const totalHours = items.reduce((acc, i) => acc + i.hours, 0);
+  const totalHours = data.reduce((acc, row) => acc + row.hours, 0);
 
-  const handleChange = (index, newHours) => {
-    const updated = [...items];
-    updated[index].hours = parseFloat(newHours) || 0;
-    setItems(updated);
+  const handleChange = (index, newVal) => {
+    const updated = [...data];
+    updated[index].hours = parseFloat(newVal) || 0;
+    setData(updated);
   };
 
   return (
@@ -26,7 +27,7 @@ function HourCalculator() {
           </tr>
         </thead>
         <tbody>
-          {items.map((row, i) => (
+          {data.map((row, i) => (
             <tr key={i}>
               <td>{row.rotation}</td>
               <td>
@@ -40,7 +41,10 @@ function HourCalculator() {
           ))}
         </tbody>
       </table>
-      <p>Total: {totalHours} hours</p>
+      <p>Total Hours: {totalHours}</p>
+      <button className="logout-button" style={{ marginTop: "1rem" }}>
+        Save
+      </button>
     </div>
   );
 }

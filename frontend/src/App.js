@@ -1,10 +1,6 @@
+// src/App.js
 import React, { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./components/Login";
 import LandingPage from "./components/LandingPage";
@@ -26,7 +22,6 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Root path => if we have a token, go to /landing, else /login */}
         <Route
           path="/"
           element={
@@ -37,23 +32,17 @@ function App() {
         {/* Login */}
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
 
-        {/* Landing */}
+        {/* Landing Page */}
         <Route
           path="/landing"
-          element={
-            token ? <LandingPage /> : <Navigate to="/login" replace />
-          }
+          element={token ? <LandingPage /> : <Navigate to="/login" replace />}
         />
 
-        {/* Main Layout => Railway-style UI */}
+        {/* Main Layout (Railway-style) */}
         <Route
           path="/main"
           element={
-            token ? (
-              <MainLayout handleLogout={handleLogout} />
-            ) : (
-              <Navigate to="/login" replace />
-            )
+            token ? <MainLayout handleLogout={handleLogout} /> : <Navigate to="/login" replace />
           }
         />
 

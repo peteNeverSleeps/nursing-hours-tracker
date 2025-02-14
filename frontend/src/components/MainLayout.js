@@ -5,32 +5,42 @@ import HourCalculator from "./HourCalculator";
 import "../styles.css";
 
 /**
- * MainLayout shows:
- *  - Top Navbar (purple bar)
- *  - Left "tiles" (sidebar)
- *  - Right "panels" that expand/collapse
+ * MainLayout:
+ *  - Top Navbar
+ *  - Left rail with "Tracker" and "Hour Calculator" tiles
+ *  - Visible right panel that shows whichever tile is selected
  */
 function MainLayout({ handleLogout }) {
   const navigate = useNavigate();
 
-  // We keep track of which "panel" is currently open:
-  // 'tracker', 'calculator', or null if none are open.
-  const [openPanel, setOpenPanel] = useState(null);
+  // We'll store the "selected tile" in local state.
+  // By default, let's show the Tracker.
+  const [selectedTile, setSelectedTile] = useState("tracker");
 
   const onLogoutClick = () => {
     if (handleLogout) handleLogout();
     navigate("/login");
   };
 
-  // If user clicks "Tracker," we toggle that panel open or closed
+  // If user clicks "Tracker"
   const handleTrackerClick = () => {
-    setOpenPanel((prev) => (prev === "tracker" ? null : "tracker"));
+    setSelectedTile("tracker");
   };
 
-  // If user clicks "Calculator," we toggle that panel open or closed
+  // If user clicks "Hour Calculator"
   const handleCalcClick = () => {
-    setOpenPanel((prev) => (prev === "calculator" ? null : "calculator"));
+    setSelectedTile("calculator");
   };
+
+  // Decide what to render on the right side based on the selected tile
+  let rightPanelContent;
+  if (selectedTile === "tracker") {
+    rightPanelContent = <Tracker />;
+  } else if (selectedTile === "calculator") {
+    rightPanelContent = <HourCalculator />;
+  } else {
+    rightPanelContent = null;
+  }
 
   return (
     <div className="layout-container">
@@ -40,7 +50,7 @@ function MainLayout({ handleLogout }) {
           <h2 className="app-title">Nursing Hours Tracker</h2>
         </div>
         <div className="nav-right">
-          {/* Example profile icon */}
+          {/* Profile icon (placeholder) */}
           <img
             src="https://via.placeholder.com/40"
             alt="Profile"
@@ -52,13 +62,13 @@ function MainLayout({ handleLogout }) {
         </div>
       </nav>
 
-      {/* === BODY (sidebar + right panels) === */}
+      {/* === BODY (Left Sidebar + Right Panel) === */}
       <div className="body-container">
-        {/* LEFT SIDEBAR with "tiles" */}
+        {/* Left Sidebar */}
         <aside className="sidebar">
           <div
             className={`sidebar-tile ${
-              openPanel === "tracker" ? "selected" : ""
+              selectedTile === "tracker" ? "selected" : ""
             }`}
             onClick={handleTrackerClick}
           >
@@ -66,34 +76,18 @@ function MainLayout({ handleLogout }) {
           </div>
           <div
             className={`sidebar-tile ${
-              openPanel === "calculator" ? "selected" : ""
+              selectedTile === "calculator" ? "selected" : ""
             }`}
             onClick={handleCalcClick}
           >
-            Hours Calculator
+            Hour Calculator
           </div>
         </aside>
 
-        {/* RIGHT "PANELS" - we have 2 potential panels: Tracker + Calculator */}
-        <div className="right-panels">
-          {/* Tracker panel */}
-          <div
-            className={`panel-wrapper ${
-              openPanel === "tracker" ? "panel-open" : "panel-closed"
-            }`}
-          >
-            <Tracker />
-          </div>
-
-          {/* Hours Calculator panel */}
-          <div
-            className={`panel-wrapper ${
-              openPanel === "calculator" ? "panel-open" : "panel-closed"
-            }`}
-          >
-            <HourCalculator />
-          </div>
-        </div>
+        {/* Right side => the selected tile's panel is always visible */}
+        <main className="main-content">
+          {rightPanelContent}
+        </main>
       </div>
     </div>
   );
