@@ -73,6 +73,15 @@ function Tracker({ token }) {
     };
   }, [token]);
 
+   // Example new save handler
+   const handleSave = () => {
+    console.log("Saving Tracker data to server...");
+    // Option A: Re-use your sendUpdate for each row
+    // Option B: Collect all table data at once, then post to your /api/hours endpoint
+    // E.g.:
+    // fetch("/api/hours/updateAll", { method: 'POST', body: JSON.stringify(...), headers: ... })
+  };
+
   return (
     <div className="tracker-container">
       {/* Navbar */}
@@ -370,6 +379,10 @@ function Tracker({ token }) {
             </tr>
           </tbody>
         </table>
+      </div>
+       {/* NEW SAVE BUTTON AT THE BOTTOM */}
+       <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+        <button className="logout-button" onClick={handleSave}>Save</button>
       </div>
     </div>
   );
