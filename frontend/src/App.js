@@ -12,7 +12,7 @@ import LandingPage from "./components/LandingPage";
 import MainLayout from "./components/MainLayout";
 import Tracker from "./components/Tracker";
 import HourCalculator from "./components/HourCalculator";
-import Dashboard from "./components/Dashboard"; // if you still want to use it
+import Dashboard from "./components/Dashboard"; // If you still want it
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
@@ -30,7 +30,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Redirect root path to /landing or /login */}
+        {/* Root path: if logged in, go to /landing, otherwise /login */}
         <Route
           path="/"
           element={
@@ -38,10 +38,10 @@ function App() {
           }
         />
 
-        {/* Login Route */}
+        {/* Login route => your existing Login component */}
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
 
-        {/* Landing Page (first screen after login) */}
+        {/* Landing page => visible only if logged in */}
         <Route
           path="/landing"
           element={
@@ -49,7 +49,7 @@ function App() {
           }
         />
 
-        {/* Main Layout - all sub-routes are nested */}
+        {/* The "main" layout => also only if logged in */}
         <Route
           path="/main"
           element={
@@ -60,15 +60,17 @@ function App() {
             )
           }
         >
-          {/* Example nested routes under /main */}
+          {/* Nested routes under /main */}
           <Route path="tracker" element={<Tracker token={token} />} />
           <Route path="hour-calculator" element={<HourCalculator />} />
+          {/* If using Dashboard */}
           <Route path="dashboard" element={<Dashboard token={token} />} />
-          {/* Fallback to tracker if user just goes to /main */}
+
+          {/* Default child route if just "/main" */}
           <Route index element={<Navigate to="tracker" replace />} />
         </Route>
 
-        {/* Catch-all for 404s */}
+        {/* Catch-all for unknown routes */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>

@@ -1,4 +1,3 @@
-// src/components/HourCalculator.js
 import React, { useState } from "react";
 import "../styles.css";
 
@@ -9,28 +8,27 @@ function HourCalculator() {
     { rotation: "Clinical C", hours: 12 },
   ]);
 
-  // Example: Summation
+  // Example total
   const totalHours = tableData.reduce((acc, row) => acc + row.hours, 0);
 
-  // Simple change handler
   const handleHoursChange = (index, newHours) => {
-    const updatedData = [...tableData];
-    updatedData[index].hours = parseFloat(newHours) || 0;
-    setTableData(updatedData);
+    const updated = [...tableData];
+    updated[index].hours = parseFloat(newHours) || 0;
+    setTableData(updated);
   };
 
-  // "Save" to backend (you would call your API here)
+  // "Save" example: post to the backend
   const handleSave = () => {
-    // Example only:
-    console.log("Saving hourCalculator data to server...", tableData);
-
-    // e.g. fetch("/api/hourcalc/save", { method: 'POST', body: JSON.stringify(tableData), ... })
+    console.log("Saving hourCalculator data...", tableData);
+    // Example fetch call:
+    // fetch("/api/hourcalc/save", { method: 'POST', ... })
   };
 
   return (
     <div>
-      <h3>Hour Calculator</h3>
-      <table>
+      <h2>Hours Calculator</h2>
+      <p>Example table for tracking clinical rotation hours.</p>
+      <table className="calc-table">
         <thead>
           <tr>
             <th>Rotation</th>
@@ -46,14 +44,19 @@ function HourCalculator() {
                   type="number"
                   value={row.hours}
                   onChange={(e) => handleHoursChange(i, e.target.value)}
+                  style={{ width: "80px" }}
                 />
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <p><strong>Total:</strong> {totalHours} hours</p>
-      <button onClick={handleSave}>Save</button>
+      <p>
+        <strong>Total Hours:</strong> {totalHours}
+      </p>
+      <button onClick={handleSave} className="logout-button">
+        Save
+      </button>
     </div>
   );
 }

@@ -49,6 +49,98 @@
   background-color: #121212; /* Dark background like Railway */
 }
 
+/* === Main Layout & Navbar === */
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Top nav with purple background */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #800080; /* Purple */
+  color: white;
+  padding: 0.75rem 1rem;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.app-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Body container => sidebar + main content */
+.body-container {
+  flex: 1;
+  display: flex;
+  background-color: #f0f0f0;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background-color: #1f1f1f; /* Dark sidebar like Railway */
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-tile {
+  color: white;
+  text-decoration: none;
+  padding: 1rem;
+  transition: background-color 0.2s;
+  border-left: 4px solid transparent;
+}
+
+.sidebar-tile:hover {
+  background-color: #333;
+  border-left: 4px solid #800080; /* Purple highlight on hover */
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  background-color: white; /* or keep #f0f0f0 if you prefer */
+}
+
+/* Logout button in navbar */
+.logout-button {
+  background-color: white;
+  color: #800080;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.logout-button:hover {
+  background-color: #d8b6d8;
+}
+
+
 /* Top Navbar */
 .top-nav {
   display: flex;

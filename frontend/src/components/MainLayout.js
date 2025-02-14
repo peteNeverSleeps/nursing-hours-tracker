@@ -1,4 +1,3 @@
-// src/components/MainLayout.js
 import React from "react";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import "../styles.css";
@@ -10,7 +9,7 @@ function MainLayout({ handleLogout }) {
     if (handleLogout) {
       handleLogout();
     }
-    navigate("/login");
+    navigate("/login"); // After logout, go to /login
   };
 
   return (
@@ -18,7 +17,7 @@ function MainLayout({ handleLogout }) {
       {/* Top Navbar */}
       <nav className="top-nav">
         <div className="nav-left">
-          <h2>Railway‐Style Nursing Tracker</h2>
+          <h2 className="app-title">Nursing Hours Tracker</h2>
         </div>
         <div className="nav-right">
           <img
@@ -32,26 +31,20 @@ function MainLayout({ handleLogout }) {
         </div>
       </nav>
 
-      {/* Body container => Sidebar + Main Content */}
+      {/* Main body => Sidebar + Main Content */}
       <div className="body-container">
-        {/* Left Sidebar (Project tiles) */}
+        {/* Left Sidebar: "tiles" to navigate to different pages */}
         <aside className="sidebar">
-          {/* Link to your Tracker */}
           <Link to="/main/tracker" className="sidebar-tile">
             Tracker
           </Link>
-          {/* Link to Hour Calculator */}
           <Link to="/main/hour-calculator" className="sidebar-tile">
             Hours Calculator
           </Link>
         </aside>
 
-        {/* Main Content (right side) */}
+        {/* Right side: whichever route is selected (Tracker or HourCalculator) */}
         <main className="main-content">
-          {/*
-            The <Outlet> is where nested routes (tracker, hour calculator, etc.)
-            will render
-          */}
           <Outlet />
         </main>
       </div>

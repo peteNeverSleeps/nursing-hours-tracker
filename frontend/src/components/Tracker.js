@@ -82,6 +82,10 @@ function Tracker({ token }) {
     // fetch("/api/hours/updateAll", { method: 'POST', body: JSON.stringify(...), headers: ... })
   };
 
+  useEffect(() => {
+    // your existing useEffect
+  }, [token]);
+
   return (
     <div className="tracker-container">
       {/* Navbar */}
